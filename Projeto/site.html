@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html style="height: 100%; width: 100%; margin: 0px; padding: 0px; background: url(https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.-CXVpD8hGhL_SfqyWR-_YQHaFP%26pid%3DApi&f=1&ipt=7a1625c3df21450b8cde595e4a58b38c9cc818f2e8b557ed1660c85d845fa11a&ipo=images); background-size: cover; background-repeat: no-repeat;">
+<head>
+	<title>Salas24</title>
+	<style>
+
+		#body {
+			width: 100%;
+			height: 100%;
+			margin: 0px;
+			padding: 0px;
+			background: rgb(243, 243, 243);
+		}
+
+		#holder {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			align-content: center;
+		}
+		
+		#imgHolder {
+			width: 80%;
+			height: 90%;
+			padding: 30px;
+			margin: 0px;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: space-between;
+			align-content: space-between;
+		}
+
+		#img {
+			max-width: 100%;
+			height: 95%;
+			display: block;
+			margin: auto;
+			margin-bottom: 30px;
+			padding: 0px;
+			border-radius: 10px;
+			box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.1);
+		}
+
+		#timeline {
+			width: 7px;
+			-webkit-appearance: slider-vertical;
+			background-color: #3498db;
+			height: 80%;
+			border: none;
+			border-radius: 50%;
+			box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+			margin-top: 6px;
+		}
+
+		#right {
+			width: 25%;
+			height: 100%;
+			padding: 0px;
+			margin-right: 25px;
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.side_input{
+			width: 40px;
+			height: 20px;
+			border: 0px;
+			border-radius: 5px;
+			margin-right: 10px;
+			margin-left: 2px;
+			box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+			background: rgb(239, 239, 239);
+			display: flex;
+			align-items: center;
+			align-content: center;
+		}
+
+		.side_label {
+			font-family:Arial, Helvetica, sans-serif;
+			height: 20px;
+			display: flex;
+			align-items: center;
+			align-content: center;
+			margin-left: 10px;
+			margin-right: 2px;
+		}
+
+		#img_in {
+			cursor: pointer;
+			border-radius: 10px;
+			background: gray;
+		}
+
+		#sigma_holder {
+			width: 100%;
+			height: 70px;
+			margin-top: 0px;
+			border-radius: 10px;
+			box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			align-content: center;
+			background: white;
+		}
+
+		#timeline_holder {
+			width: 100%;
+			height: 80%;
+			margin-top: 20px;
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+		}
+
+		#date_holder {
+			width: 100%;
+			height: 60px;
+			margin: 0%;
+			padding: 0%;
+			border-radius: 15px;
+			margin-bottom: 30px;
+			box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: space-between;
+			background: white;
+		}
+
+		#label_holder {
+			width: 100%;
+			height: 160px;
+			margin: 0%;
+			padding: 0%;
+			border-radius: 15px;
+			margin-bottom: 30px;
+			box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
+			display: flex;
+			flex-direction: column;
+			align-items: start;
+			justify-content: space-around;
+			background: white;
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+
+		.label {
+			display: inline-block;
+			width: 20px; 
+			height: 20px; 
+			margin-right: 5px; 
+			margin-left: 20px;
+			border-radius: 3px;
+		}
+
+		#title {
+			font-family:Arial, Helvetica, sans-serif;
+			height: 20px;
+			display: flex;
+			align-items: center;
+			align-content: center;
+			margin-left: 10px;
+			margin-right: 2px;
+			font-size: large;
+			margin-top: 20px;
+		}
+
+	</style>
+</head>
+<body id="body">
+	<div id="holder">
+		<div id="imgHolder">
+			<img id="img" src="/heatmap" alt="image">
+		</div>
+
+		<div id="right">
+			<label id="title">Biblioteca Geral UMinho</label>
+			<div id="timeline_holder">
+				<div id="date_holder">
+					<label id="day_label" class="side_label" for="day">Day</label>
+					<input type="number" class="side_input" id="day" onchange="get_heatmap()">
+
+					<label id="month_label" class="side_label" for="month">Month</label>
+					<input type="number" class="side_input" id="month" onchange="get_heatmap()">
+
+					<label id="year_label" class="side_label" for="year">Year</label>
+					<input type="number" class="side_input" id="year" onchange="get_heatmap()">
+				</div>
+				<div id="date_holder">
+					<label id="hour_label" class="side_label" for="hour">Hour</label>
+					<input type="number" class="side_input" id="hour" onchange="get_heatmap()">
+
+					<label id="minute_label" class="side_label" for="minute">Minute</label>
+					<input type="number" class="side_input" id="minute" onchange="get_heatmap()">
+				</div>
+				<div id="label_holder">
+					<div style="display: flex;">
+						<span class="label" style="background-color: #1071E5;"></span>
+						<div style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">Literatura, Linguas e Arte</div>
+					</div>
+					<div style="display: flex;">
+						<span class="label" style="background-color: #54C45E;"></span>
+						<div style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">Estatistica, Socialogia, Politica e Direito</div>
+					</div>
+					<div style="display: flex;">
+						<span class="label" style="background-color: #58EE12;"></span>
+						<div style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">Dicionarios e Enciclopedias</div>
+					</div>
+					<div style="display: flex;">
+						<span class="label" style="background-color: #FF8F8F;"></span>
+						<div style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">Historia, Biografias e Literatura</div>
+					</div>
+					<div style="display: flex;">
+						<span class="label" style="background-color: #BA23F6;"></span>
+						<div style="font-family: Arial, Helvetica, sans-serif; font-size: 14px;">Filosofia, Teologia, Psicologia</div>
+					</div>
+				</div>
+				<div id="sigma_holder">
+					<label id="side_label_sigma" class="side_label" for="sigma">Sigma</label>
+					<input type="number" class="side_input" id="sigma" value=35 onchange="get_heatmap()">
+					<label id="side_label_sigma" class="side_label" for="window">Window</label>
+					<input type="number" class="side_input" id="window" value=5 onchange="get_heatmap()">
+				</div>
+			</div>
+		</div>
+		
+	</div>
+	
+	<iframe style="width: 100%; height: 100%;" src="https://lookerstudio.google.com/embed/reporting/c3c73522-ef7c-4093-ac3f-d829a1284abc/page/3egOD" frameborder="0" style="border:0" allowfullscreen></iframe>
+	
+	<script>
+		const currentUrl = window.location.href
+		const year = document.getElementById("year")
+		const month = document.getElementById("month")
+		const day = document.getElementById("day")
+		const hour = document.getElementById("hour")
+		const minute = document.getElementById("minute")
+		const sigma = document.getElementById("sigma")
+		const wind = document.getElementById("window")
+		let start_year = 0
+		let start_month = 0
+		let start_day = 0
+		let start_hour = 0
+		let start_minute = 0
+		
+		fetch(currentUrl + "start_time").then(response => {
+			return response.json();
+		}).then(res => {
+			console.log(res)
+			data = res.split("-")
+			start_year = data[0]
+			start_month = data[1]
+			start_day = data[2]
+			start_hour = data[3]
+			start_minute = data[4]
+			year.value = start_year
+			month.value = start_month
+			day.value = start_day
+			hour.value = start_hour
+			minute.value = start_minute
+			get_heatmap()
+		});
+
+
+		function get_heatmap() {
+			// Safety checks
+			if (parseInt(minute.value) > 59){
+				hour.value = parseInt(hour.value) + 1
+				minute.value = 00
+			}
+			if (parseInt(minute.value) < 0){
+				hour.value = parseInt(hour.value) - 1
+				minute.value = 59
+			}
+			if (parseInt(hour.value) > 23){
+				day.value = parseInt(day.value) + 1
+				hour.value = 00
+			}
+			if (parseInt(hour.value) < 0){
+				day.value = parseInt(day.value) - 1
+				hour.value = 23
+			}
+
+			console.log("Requesting heatmap...")
+			var date = `${day.value}/${month.value}/${year.value}`
+			var time = `${hour.value}:${minute.value}`
+			var start_x = 177;
+			var start_y = 16;
+			var end_x = 347;
+			var end_y = 490;
+			var len_x = 8;
+			var len_y = 24;
+			var sig = sigma.value;
+			var wi = wind.value;
+
+		    const heatmapUrl = currentUrl + "heatmap";
+
+			const options = {
+				method: 'POST',
+				body: JSON.stringify({
+					date: date,
+					time: time,
+					start_x: start_x,
+					start_y: start_y,
+					end_x: end_x,
+					end_y: end_y,
+					len_x: len_x,
+					len_y: len_y,
+					sigma: sig,
+					window: wi
+				}),
+				headers: {
+				  'Content-Type': 'application/json'
+				}
+			};
+
+			fetch(heatmapUrl, options)
+			.then(response => response.blob())
+	        .then(blob => {
+	          const imgUrl = URL.createObjectURL(blob);
+	          const imgEl = document.getElementById('img');
+	          imgEl.src = imgUrl;
+	        })
+		}
+	</script>
+</body>
+</html>
